@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { HeaderLink } from './HeaderLink'
 import { Section_h1 } from './Section_h1'
 import { Works_img } from './Works_img'
@@ -6,9 +7,57 @@ import { News_content } from './News_content'
 import { Forms } from './Forms'
 
 const Home = () => {
+  // const [count,setCount] = useState(0);
+  const [task, setTask] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+
+  const [inputData, setInputData] = useState({ taskName: "", dueDate: "" });
+  const [data, setData] = useState<object[]>([])
+  
+  // setData(inputData)
+  // useEffect(() => {
+  //   // setData((prevState) =>  ([inputData, ...prevState]))  
+  //   setData([...data, inputData])
+  //   console.log(data)
+  // }, [inputData]);
+  // // console.log(data)
+
+
+  const handleClick = () => {
+    setInputData({ taskName: task, dueDate: date })
+    setData([...data, inputData])
+    console.log(data)
+  }
+
   return (
   <div>
-    <header className="flex bg-[#f5f4f1] h-32">
+    <div className="flex">
+      <input type="checkbox" className="mx-2"/>
+      <p className="mx-2">{}</p>
+    </div>
+
+    <div>
+      <input className="border mx-2" type="text" name="taskName" value={task} onChange={(event) => setTask(event.target.value)}/>
+      <input className="border mx-2" type="text" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+      <p>余分に一回押してね</p>
+      <button onClick={handleClick}>保存</button>
+    </div>
+  
+
+
+
+
+    {/* {count}
+    <div className="block mt-4">
+      <button className="border px-2 py-1" onClick={() => {setCount(count + 1)}}>
+        Increment
+      </button>
+      <button className="border px-2 py-1" onClick={() => {setCount(count - 1)}}>
+        Decrement
+      </button>
+    </div> */}
+
+    {/* <header className="flex bg-[#f5f4f1] h-32">
       <h1 className="w-1/2 text-center text-2xl mx-0 my-auto">My Work</h1>
       <nav className ="flex ml-20 my-auto">
         <HeaderLink href="/about" text="About"/>
@@ -82,7 +131,7 @@ const Home = () => {
 
     <footer className="bg-gray-800 w-full h-10">
       <small className=" block text-white text-center block">&copy; 2020 My Work</small>
-    </footer>
+    </footer> */}
   </div>
   )
 }
