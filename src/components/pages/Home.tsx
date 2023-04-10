@@ -4,53 +4,38 @@ import { Header } from '../organisms/Header'
 import { Fotter } from '../organisms/Fotter'
 import { Content } from '../templates/Content'
 const Home = () => {
+
+  type dataType = {taskName:string, dueDate:string}
+
 //   // const [count,setCount] = useState(0);
-//   const [task, setTask] = useState<string>("");
-//   const [date, setDate] = useState<string>("");
+  const [task, setTask] = useState<string>("");
+  const [date, setDate] = useState<string>("");
 
-//   const [data, setData] = useState<object[]>([]);
-
-//   let items:object[] = []
-//   let item:object= {}
-
-//   for(let i = 0; i <= data.length; i++) {
-//     item = data[i];
-//     items.push(item)
-//   }
+  const [data, setData] = useState<dataType[]>([]);
   
-//   useEffect(() => {
-
-//     const view:HTMLElement = document.getElementById("view") as HTMLElement
-
-//   for(let i = 0; i <= items.length; i++) {
-//     view.insertAdjacentHTML('afterend',' <input type="checkbox"/> ' + JSON.stringify(items[i]) + '<br/>')
-//   }
-  
-//     console.log(data.length)
-//     console.log(items.length)
-//   }, [data]);
+  useEffect(() => {  
+    console.log(data.length)
+  }, [data]);
 
   
 
   
-  
-
-
-
-
 
   return (
-   <div /*className="mx-auto max-w-xl"*/>
-{/* //     <div className="bg-gray-300">
-//       <div id="view">
-//       </div>
-//     </div>
+  <div className="mx-auto max-w-xl">
+    <div className="bg-gray-300">
+      <div id="view">
+        {data.map(data => (
+          <div key={data.taskName}><input type="checkbox"/>{data.taskName}{data.dueDate}</div>
+        ))}
+      </div>
+  </div>
 
-//     <div className="mt-">
-//       <input className="border mx-2" type="text" name="taskName" value={task} onChange={(event) => setTask(event.target.value)}/>
-//       <input className="border mx-2" type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
-//       <button onClick={() => setData([...data, { taskName: task, dueDate: date }])}>保存</button>
-//     </div> */}
+    <div className="mt-">
+      <input className="border mx-2" type="text" name="taskName" value={task} onChange={(event) => setTask(event.target.value)}/>
+      <input className="border mx-2" type="date" name="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+      <button onClick={() => setData([...data, { taskName: task, dueDate: date }])}>保存</button>
+    </div>
   
 
 
@@ -66,11 +51,16 @@ const Home = () => {
       </button>
     </div> */}
 
-    <Header/>
+
+
+
+
+
+    {/* <Header/>
 
     <Content/>
 
-    <Fotter/>
+    <Fotter/> */}
   </div>
   )
 }
