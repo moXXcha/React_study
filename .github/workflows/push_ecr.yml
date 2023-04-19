@@ -29,7 +29,7 @@ jobs:
         id: build-image
         env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
-          ECR_REPOGITORY: ${{secret.AWS_DEV_REPOGITORY_NAME}}
+          ECR_REPOGITORY: ${{secrets.AWS_DEV_REPOGITORY_NAME}}
         
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY
