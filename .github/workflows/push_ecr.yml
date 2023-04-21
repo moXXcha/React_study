@@ -33,9 +33,9 @@ jobs:
         
         run: |
           IMAGE_TAG=$(cat ./${ISSUE_NUMBER}/version.json | jq -r .version)
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          docker build -t $ECR_REGISTRY/$ECR_REPOGITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOGITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOGITORY:$IMAGE_TAG"
       
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
